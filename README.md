@@ -52,4 +52,4 @@ To run the app, you simply need to ensure Docker is running, and then call
 docker compose up
 ```
 
-Now, your app should be running at [localhost](localhost:8088/)
+Now, your app should be running at localhost:8088/
