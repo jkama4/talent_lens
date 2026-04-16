@@ -14,6 +14,12 @@ services:
         condition: service_started
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
   dashboard:
     build:
@@ -27,7 +33,7 @@ services:
       - ./src:/src
     depends_on:
       semantic_search:
-        condition: service_started
+        condition: service_healthy
       typesense:
         condition: service_started
       db:
