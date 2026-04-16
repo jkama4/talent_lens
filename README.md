@@ -1,8 +1,8 @@
 # TalentLens (Proof-of-Concept)
-TalentLens is an AI tool that provides users the ability search through data with natural language. 
-This proof-of-concept is designed for Pro-Act IT, a consultancy company with a huge database of 
+TalentLens is an AI tool that provides users the ability to search through data with natural language. 
+TalentLens is a proof-of-concept designed for Pro-Act IT, a consultancy company with a huge database of 
 consultants. However, querying over the database is very time-consuming and inefficient in many 
-cases. Therefore, I developed TalentLens, which provides companies the ability to quickly retrieve 
+cases. Therefore, I developed TalentLens, which provides workers the ability to quickly retrieve 
 relevant data.
 
 ## Application
@@ -46,7 +46,7 @@ poetry shell
 ```
 
 ## Running the Application
-To run the app, you simply need ensure Docker is booted up, and then call
+To run the app, you simply need to ensure Docker is running, and then call
 
 ```
 docker compose up
