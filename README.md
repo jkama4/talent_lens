@@ -5,7 +5,7 @@ consultants. However, querying over the database is very time-consuming and inef
 cases. Therefore, I developed TalentLens, which provides workers the ability to quickly retrieve 
 relevant data.
 
-## Application
+## Tools
 For everything to work, make sure [Python 3.13](https://www.python.org/downloads/), 
 [Docker](https://www.docker.com/get-started/), and [Ollama](https://ollama.com/download) 
 are all installed on your computer.
