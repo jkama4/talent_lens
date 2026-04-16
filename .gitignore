@@ -1,0 +1,14 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Typesense runtime data & models
+typesense-data/
+
+# Sensitive data files
+src/semantic_search/data/excel_sheets/
