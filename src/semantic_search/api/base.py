@@ -33,12 +33,6 @@ async def seed_endpoint() -> Dict:
     return {"seeded": True, "indexed": count}
 
 
-@app.post("/index")
-async def index_endpoint() -> Dict:
-    count = index_all_candidates()
-    return {"indexed": count}
-
-
 @app.get("/search")
 async def search_endpoint(
     user_prompt: str,

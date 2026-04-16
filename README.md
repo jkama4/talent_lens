@@ -5,51 +5,68 @@ consultants. However, querying over the database is very time-consuming and inef
 cases. Therefore, I developed TalentLens, which provides workers the ability to quickly retrieve 
 relevant data.
 
-## Tools
-For everything to work, make sure [Python 3.13](https://www.python.org/downloads/), 
-[Docker](https://www.docker.com/get-started/), and [Ollama](https://ollama.com/download) 
-are all installed on your computer.
+## Requirements
+The only requirement is [Docker](https://www.docker.com/get-started/). Everything else (Python, 
+Ollama, Typesense, PostgreSQL) runs inside Docker containers.
 
-## Virtual Environment
-For the project, we're using a virtual environment. This is the most common and versatile way 
-to start working on coding projects. We'll be using [Poetry](https://python-poetry.org/docs/). 
-Poetry is a powerful tool for managing your Python dependencies and packages. You can run the 
-following command to install Poetry:
+If you want to develop or run tests locally outside of Docker, you will also need 
+[Python 3.13](https://www.python.org/downloads/) and [Poetry](https://python-poetry.org/docs/).
+
+## Running the Application
+
+Make sure Docker is running, then start all services:
+
+```
+docker compose up
+```
+
+The first boot could take a minutes. Docker will build the images and Ollama will download the 
+`llama3.2` model (~2 GB). Wait until all containers show as healthy before continuing.
+
+Once everything is up, seed the database with sample data:
+
+```
+curl -X POST http://localhost:8000/seed
+```
+
+The dashboard is now available at [http://localhost:8501](http://localhost:8501).
+
+## Resetting Everything
+
+To wipe all data and start fresh:
+
+```
+docker compose down -v
+```
+
+Then run `docker compose up` and re-seed as described above.
+
+## Local Development
+
+If you want to work on the code outside of Docker, set up a local virtual environment using 
+[Poetry](https://python-poetry.org/docs/):
 
 ```
 pip install poetry
 ```
 
-After you've installed poetry, you can move to wherever the project lives on your device:
+Move to the project directory:
 
 ```
 cd ~/path/to/semantic_search
 ```
 
-Then, to actually create the virtual environment, call
+Create the virtual environment:
 
 ```
 poetry install
 ```
 
-To work within the environment, use
+Activate it:
 
 ```
 $(poetry env activate) # for macOS or Linux
 poetry env activate # for Windows
 ```
 
-Alternatively, you can use
-
-```
-poetry shell
-```
-
-## Running the Application
-To run the app, you simply need to ensure Docker is running, and then call
-
-```
-docker compose up
-```
-
-Now, your app should be running at localhost:8501/
+Or use `poetry shell` as an alternative.

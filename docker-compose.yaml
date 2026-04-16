@@ -11,7 +11,7 @@ services:
       - ./src:/src
     depends_on:
       typesense:
-        condition: service_started
+        condition: service_healthy
       db:
         condition: service_healthy
     healthcheck:
@@ -35,7 +35,7 @@ services:
       semantic_search:
         condition: service_healthy
       typesense:
-        condition: service_started
+        condition: service_healthy
       db:
         condition: service_healthy
     command: ["streamlit", "run", "semantic_search/dashboard/app.py", "--server.address", "0.0.0.0", "--server.port", "8501"]
@@ -48,6 +48,12 @@ services:
     volumes:
       - typesense-data:/data
     command: '--data-dir /data --api-key=xyz --enable-cors'
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/8108' 2>/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 60s
 
   ollama:
     image: ollama/ollama

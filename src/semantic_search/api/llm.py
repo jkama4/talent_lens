@@ -11,7 +11,7 @@ def call(
 ) -> str:
 
     response: oll.ChatResponse = LLM_CLIENT.chat(
-        model="llama3.2", 
+        model="llama3.2",
         messages=messages,
     )
     
